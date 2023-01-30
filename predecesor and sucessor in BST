@@ -1,0 +1,35 @@
+
+
+/* BST Node
+class Node
+{
+	int key;
+	Node left, right;
+	
+	Node(int item)
+	{
+	    data = item;
+	    left = right = null;
+	}
+}
+*/
+
+// This function finds predecessor and successor of key in BST.
+// It sets pre and suc as predecessor and successor respectively
+class GfG
+{
+    public static void findPreSuc(Node root, Res p, Res s, int key)
+    {
+       // add your code here
+       inorder(root,p,s,key);
+    }
+    
+    public static void inorder(Node root, Res p,Res s,int k){
+        if(root==null)return;
+        inorder(root.left,p,s,k);
+        if(root.data<k)p.pre=root;
+      if(root.data>k){  if(s.succ==null)s.succ=root;
+        if(s.succ.data>root.data)s.succ=root;
+        }inorder(root.right,p,s,k);
+    }
+    }
