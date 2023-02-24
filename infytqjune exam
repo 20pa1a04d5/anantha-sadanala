@@ -1,0 +1,600 @@
+//Alternate even odd series
+
+public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String a=sc.nextLine();
+        ArrayList<Character> l=new ArrayList<>();
+        ArrayList<Character> l1=new ArrayList<>();
+        int c=0;
+        for(int i=0;i<a.length();i++)
+        {
+            if(!Character.isLetter(a.charAt(i))&&!Character.isDigit(a.charAt(i)))
+            {
+                l1.add(a.charAt(i));
+                c++;
+            }
+            if(Character.isDigit(a.charAt(i)))
+            {
+                l.add(a.charAt(i));
+            }
+        }
+        String d="";
+        String d1="";
+        for(int i=0;i<l.size();i++)
+        {
+            if(l.get(i)%2==0)
+            {
+                d=d+l.get(i);
+            }
+        }
+        for(int i=0;i<l.size();i++)
+        {
+            if(l.get(i)%2!=0)
+            {
+                d1=d1+l.get(i);
+            }
+            
+        }
+        ArrayList<Character> p=new ArrayList<>();
+        for(int i=0;i<d.length();i++)
+        {
+            p.add(d.charAt(i));
+        }
+        ArrayList<Character> p1=new ArrayList<>();
+        for(int i=0;i<d1.length();i++)
+        {
+            p1.add(d1.charAt(i));
+        }
+        String e=""; 
+        String eq="";
+        for(int i=0;i<l.size();i++)
+        {
+            if(p.size()!=0&&p1.size()!=0)
+            {
+                e=e+p1.get(0);
+                e=e+p.get(0);
+                p1.remove(0);
+                p.remove(0);
+            }
+            if(p.size()!=0&&p1.size()==0)
+            {
+                e=e+p.get(0);
+                p.remove(0);
+            }
+            if(p1.size()!=0&&p.size()==0)
+            {
+                e=e+p1.get(0);
+                p1.remove(0);
+            }
+        }
+        ArrayList<Character> pp=new ArrayList<>();
+        for(int i=0;i<d.length();i++)
+        {
+            pp.add(d.charAt(i));
+        }
+        ArrayList<Character> pw=new ArrayList<>();
+        for(int i=0;i<d1.length();i++)
+        {
+            pw.add(d1.charAt(i));
+        }
+       
+        for(int i=0;i<l.size();i++)
+        {
+            if(pp.size()!=0&&pw.size()!=0)
+            {
+                eq=eq+pp.get(0);
+                eq=eq+pw.get(0);
+                pw.remove(0);
+                pp.remove(0);
+            }
+            if(pp.size()!=0&&pw.size()==0)
+            {
+                eq=eq+pp.get(0);
+                pp.remove(0);
+            }
+            if(pw.size()!=0&&pp.size()==0)
+            {
+                eq=eq+pw.get(0);
+                pw.remove(0);
+            }
+        }
+        if(c%2==0)
+        {
+            System.out.println(eq);
+        }
+        else{
+            System.out.println(e);
+        }
+    }
+    
+    //unique sequnce 1
+    
+    Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        ArrayList<Integer> s=new ArrayList();
+        while(sc.hasNext()) {
+            int a1=sc.nextInt() ;
+            s.add(a1); 
+}
+        Collections.sort(s);
+        HashMap<Integer,Integer> h=new HashMap<>();
+        for(int i=0;i<s.size();i++)
+        {
+            h.put(s.get(i),h.getOrDefault(s.get(i),0)+1);
+        }
+        ArrayList<Integer> l=new ArrayList<>();
+        for(Map.Entry<Integer,Integer> d:h.entrySet())
+        {
+          
+            l.add(d.getValue());
+            
+        }
+        Collections.sort(l);
+        int d=0;
+        while(d<a)
+        {
+            for(int i=0;i<l.size()&&d<a;i++)
+            {
+                while(l.get(i)>0&&d<a)
+                {
+                    int z=l.get(i);
+                    l.set(i,z-1);
+                    d++;
+                    
+                }
+            }
+        }
+        int c=0;
+        for(int i=0;i<l.size();i++)
+        {
+            if(l.get(i)>0)
+            {
+                c++;
+            }
+        }
+        System.out.println(c);
+        
+        
+    }
+}
+
+
+//pronic number3
+
+import math
+s=input()
+l=[]
+for i in range(0,len(s)):
+    for j in range(i,len(s)):
+        n=int(s[i:j+1])
+        a=math.floor(math.sqrt(n))
+        if(a*(a+1)==n):
+            if(n!=0):
+                l.append(n)
+l1=sorted(set(l))
+if(len(l1)==0):
+    print(-1)
+else:
+    for i in range(0,len(l1)-1):
+        print(l1[i],end=",")
+    print(l1[len(l1)-1])
+    
+    //kth non repeating character
+    
+    Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        int b=sc.nextInt();
+        ArrayList<Character> l=new ArrayList<>();
+        for(int i=0;i<s.length();i++)
+        {
+            l.add(s.charAt(i));
+        }
+        
+        HashMap<Character,Integer> h=new HashMap<>();
+        for(int i=0;i<l.size();i++)
+        {
+            h.put(l.get(i),h.getOrDefault(l.get(i),0)+1);
+        }
+        ArrayList<Integer> l1=new ArrayList<>();
+        for(Map.Entry<Character,Integer> d:h.entrySet())
+        {
+          
+            l1.add(d.getValue());
+            
+        }
+        Collections.sort(l1);
+        ArrayList<Integer> bb=new ArrayList<>();
+        for(int i=0;i<l1.size()-1;i++)
+        {
+            if(l1.get(i)!=l1.get(i+1))
+            {
+                bb.add(l1.get(i));
+            }
+        }
+        bb.add(l1.get(l1.size()-1));
+        ArrayList<Character> ll=new ArrayList<>();
+        for(int i=0;i<bb.size();i++)
+        {
+            int a=bb.get(i);
+            for(Map.Entry<Character,Integer> g:h.entrySet())
+            {
+                if(g.getValue()==a)
+                {
+                    ll.add(g.getKey());
+                }
+                    
+                    
+                }
+         }
+         Collections.sort(ll);
+         ArrayList<Character> lll=new ArrayList<>();
+         ArrayList<Character> ll1=new ArrayList<>();
+         for(int i=0;i<ll.size();i++)
+         {
+             if(h.get(ll.get(i))==1)
+             {
+                 lll.add(ll.get(i));
+             }
+             else{
+                 ll1.add(ll.get(i));
+             }
+             
+             
+         }
+         ArrayList<Character> llc=new ArrayList<>();
+         for(int i=0;i<l.size();i++)
+         {
+             for(int j=0;j<lll.size();j++)
+             {
+                 if(l.get(i)==lll.get(j))
+                 {
+                     llc.add(lll.get(j));
+                 }
+             }
+         }
+         for(int i=0;i<ll1.size();i++)
+         {
+             llc.add(ll1.get(i));
+         }
+         if(b<l1.size())
+         {
+             if(l1.get(b-1)==1)
+             {
+                 System.out.println(llc.get(b-1));
+             }
+             else
+             {
+                 System.out.println("-1");
+             }
+         }
+         else{
+             System.out.println("-1");
+         }
+         }
+        
+        
+        //Anti palindrone string
+        
+         Scanner sc=new Scanner(System.in);
+
+        int a=sc.nextInt();
+
+        sc.nextLine();
+
+        for(int i=0;i<a;i++)
+
+        {
+
+            String s=sc.nextLine();
+
+            StringBuilder s1=new StringBuilder(s);
+
+            s1.reverse();
+
+            String s2=s1.toString();
+
+            if(s.equals(s2))
+
+            {
+
+                System.out.println(-1);
+
+            }
+
+            else
+
+            {
+
+                char c[]=s.toCharArray();
+
+                Arrays.sort(c);
+
+                String n="";
+
+                for(int j=0;j<c.length;j++)
+
+                {
+
+                    n+=c[j];
+
+                }
+
+                System.out.println(n);
+
+            }
+
+        }
+
+
+//word manipilation1 
+
+Scanner sc=new Scanner(System.in);
+
+        String a=sc.nextLine();
+
+        ArrayList<Character> l=new ArrayList<>();
+
+        for(int i=0;i<a.length();i++)
+
+        {
+
+            l.add(a.charAt(i));
+
+        }
+
+        ArrayList<String> t=new ArrayList<>();
+
+        for(int i=0;i<l.size()-1;i++)
+
+        {
+
+            char e=l.get(i);
+
+            String g="";
+
+            g=g+e;
+
+            for(int j=i+1;j<l.size();j++)
+
+            {
+
+                if(Character.isUpperCase(e))
+
+                {
+
+                    if((l.get(j)==e)||Character.toUpperCase(l.get(j))==e)
+
+                    {
+
+                        g=g+l.get(j);
+
+                        
+
+                    }
+
+                }
+
+                else
+
+                {
+
+                    if((l.get(j)==e)||Character.toLowerCase(l.get(j))==e)
+
+                    {
+
+                        g=g+l.get(j);
+
+                        
+
+                    }
+
+                }
+
+                
+
+            }
+
+            t.add(g);
+
+            
+
+        }
+
+        String e=a.substring(a.length()-1,a.length());
+
+        t.add(e);
+
+        ArrayList<String> u=new ArrayList<>();
+
+        ArrayList<String> u1=new ArrayList<>();
+
+        for(int i=t.size()-1;i>=0;i--)
+
+        {
+
+                    u.add(t.get(i));
+
+        }
+
+        for(int i=0;i<u.size()-1;i++)
+
+        {
+
+            String v=u.get(i);
+
+            int c=0;
+
+            for(int j=i+1;j<u.size();j++)
+
+            {
+
+                if((u.get(j)).contains(v))
+
+                {
+
+                    c++;
+
+                }
+
+            }
+
+            if(c==0)
+
+            {
+
+                u1.add(v);
+
+            }
+
+        }
+
+        u1.add(u.get(u.size()-1));
+
+        HashMap<String,String> q=new HashMap<>();
+
+        for(int i=0;i<u1.size();i++)
+
+        {
+
+            String g1=u1.get(i);
+
+            String g2=g1.toLowerCase();
+
+            q.put(g2.substring(0,1),g1);
+
+        }
+
+        ArrayList<String> t1=new ArrayList<>();
+
+        for(Map.Entry<String,String> d1:q.entrySet())
+
+        {
+
+            t1.add(d1.getKey());
+
+        }
+
+        Collections.sort(t1);
+
+        ArrayList<String> st=new ArrayList<>();
+
+        for(int i=0;i<t1.size();i++)
+
+        {
+
+            String se=t1.get(i);
+
+            for(Map.Entry<String,String> dd:q.entrySet())
+
+            {
+
+                if(dd.getKey()==se)
+
+                {
+
+                    st.add(dd.getValue());
+
+                }
+
+            }
+
+        }
+
+        String we="";
+
+        for(int i=0;i<st.size()/2;i++)
+
+        {
+
+            we=(we+st.get(i)+st.get(st.size()-1-i));
+
+        }
+
+        if(st.size()%2!=0)
+
+        {
+
+            we=we+st.get((st.size()/2));
+
+        }
+
+        System.out.println(we);
+        }
+    }
+    
+    //Two numbers3
+    Scanner sc=new Scanner(System.in);
+        ArrayList<Integer> l=new ArrayList<>();
+        while(sc.hasNextInt())
+        {
+            int k=sc.nextInt();
+            l.add(k);
+        }
+        String a="";
+        int c=0;
+    
+        for(int i=0;i<l.size();i++)
+        {
+            if(l.get(i)==5)
+            {
+                for(int j=i;j<l.size();j++)
+                {
+                    a=a+l.get(j);
+                    if(l.get(j)==8)
+                    {
+                        a=a+l.get(j);
+                        i++;
+                        break;
+                        
+                    }
+                    else
+                    {
+                        
+                        i++;
+                    }
+                }
+            }
+        }
+        for(int i=0;i<l.size();i++)
+        {
+            if(l.get(i)==5)
+            {
+                break;
+            }
+            else
+            {
+                c=c+l.get(i);
+            }
+        }
+        int y=0;
+        for(int i=l.size()-1;i>0;i--)
+        {
+            if(l.get(i)==8)
+            {
+                break;
+            }
+            else
+            {
+                y=y+l.get(i);
+            }
+        }
+        int w=c+y;
+        String dd=a.substring(0,a.length()-1);
+        int e=Integer.parseInt(dd);
+        for(int i=l.size()-1;i<0;i--)
+        {
+            if(l.get(i)!=8)
+            {
+                c=c+l.get(i);
+            }
+            else
+            {
+                break;
+            }
+        }
+        System.out.println(e+w);
+
+                
+        
+    }
+    }
