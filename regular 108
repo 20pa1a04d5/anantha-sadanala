@@ -1,0 +1,132 @@
+//tcs6
+
+import java.util.Scanner;
+public class Main {
+    static int fib(int n) {
+        if (n == 0) {
+            return 0;
+        } else if (n == 1) {
+            return 1;
+        } else {
+            return fib(n - 1) + fib(n - 2);
+        }
+    }
+    static int odd(int n) {
+        return 2 * n - 1;
+    }
+    static int term(int n) {
+        if (n % 2 == 1) {
+            return odd((n + 1) / 2);
+        } else {
+            return fib(n / 2);
+        }
+    }
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        int n = in.nextInt();
+        System.out.println(term(n));
+    }
+}
+
+//string palindrome4
+
+import java.io.*;
+import java.util.*;
+
+public class Solution {
+
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        String a=sc.nextLine();
+        String c="";
+        for(int i=0;i<a.length();i++)
+        {
+            if(Character.isLetter(a.charAt(i)))
+            {
+                c=c+Character.toLowerCase(a.charAt(i));
+            }
+            else
+            {
+                c=c+a.charAt(i);
+            }
+        }
+        
+        StringBuffer s=new StringBuffer(c);
+        s.reverse();
+        
+        String b=s.toString();
+        if(b.equals(c))
+        {
+            System.out.println("Palindrome");
+        }
+        else
+        {
+            System.out.println("Not Palindrome");
+        }
+        
+        
+    }
+}
+
+
+//string revesal
+
+ Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String s1="";
+        String s2 ="";
+        for(int i=s.length()-1;i>=0;i--){
+            if(Character.isAlphabetic(s.charAt(i)) || Character.isDigit(s.charAt(i))){
+                s1+=s.charAt(i);
+            }
+        }
+        int c=0;
+        for(int i=0;i<s.length();i++){
+            if(Character.isAlphabetic(s.charAt(i)) || Character.isDigit(s.charAt(i))){
+                s2+=s1.charAt(c);
+                c++;
+            }else{
+                s2+=s.charAt(i);
+            }
+        }
+        System.out.println(s2);
+    }
+    
+    //sort the dates
+    
+    Scanner sc = new Scanner(System.in);
+    String datesString = sc.nextLine();
+    sc.close();
+    String[] datesArray = datesString.split(",");
+    ArrayList<String> dates = new ArrayList<String>();
+    for (String date : datesArray) {
+      dates.add(date.trim());
+    }
+    Collections.sort(dates, new Comparator<String>() {
+      @Override
+      public int compare(String o1, String o2) {
+        try {
+          SimpleDateFormat sdf = new SimpleDateFormat("dd MMM yyyy");
+          Date d1 = sdf.parse(o1);
+          Date d2 = sdf.parse(o2);
+          return d1.compareTo(d2);
+        } catch (ParseException e) {
+          e.printStackTrace();
+        }
+        return 0;
+      }
+    });
+    for (int i = 0; i < dates.size(); i++) {
+      String date = dates.get(i);
+      String[] dateComponents = date.split(" ");
+      String day = dateComponents[0];
+      String month = dateComponents[1].toUpperCase();
+      month = month.substring(0, 1) + month.substring(1).toLowerCase();
+      String year = dateComponents[2];
+      System.out.print(day + " " + month + " " + year);
+      if (i < dates.size() - 1) {
+        System.out.print(", ");
+      }
+    }
+  }
+}
